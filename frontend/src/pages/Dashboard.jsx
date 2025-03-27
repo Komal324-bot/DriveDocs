@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [uploading, setUploading] = useState(false); 
   // Fetch logged-in user details
   useEffect(() => {
-    fetch("http://localhost:5000/auth/user", { credentials: "include" })
+    fetch("https://drivedocs.onrender.com/auth/user", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
@@ -34,7 +34,7 @@ const Dashboard = () => {
     setUploading(true);
 
     try {
-        const response = await fetch("http://localhost:5000/drive/upload", {
+        const response = await fetch("https://drivedocs.onrender.com/drive/upload", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ text }),

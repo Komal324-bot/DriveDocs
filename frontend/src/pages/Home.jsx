@@ -4,7 +4,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/auth/user", { credentials: "include" })
+    fetch("https://drivedocs.onrender.com/auth/user", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setUser(data.user));
   }, []);
@@ -37,7 +37,7 @@ const Home = () => {
       <h3>📌 Get Started Now!</h3>
       <p>Click the button below to log in and start writing!</p>
      
-        <a href="http://localhost:5000/auth/google"><button>Login with Google</button></a>
+        <a href="https://drivedocs.onrender.com/auth/google"><button>Login with Google</button></a>
     </div>
   );
 };
