@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   // Logout function
   const handleLogout = () => {
-    window.location.href = "http://localhost:3000/"; 
+    window.location.href = "https://drive-docs-529b.vercel.app"; 
   };
 
   return (
