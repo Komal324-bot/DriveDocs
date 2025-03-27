@@ -4,18 +4,26 @@ const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const driveRoutes = require("./routes/driverRoutes"); // ✅ Import Drive Routes
+const driveRoutes = require("./routes/driverRoutes"); 
 
 const app = express();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-app.use(express.json());
+app.use(cors({
+  origin: ["https://drive-docs-529b.vercel.app", "http://localhost:3000"], 
+  credentials: true,
+}));
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      secure: true,  
+      sameSite: "none",  
+      httpOnly: true,  
+    },
   })
 );
 app.use(passport.initialize());
@@ -55,7 +63,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("http://localhost:3000/dashboard"); // ✅ Redirect after login
+    res.redirect("https://drive-docs-529b.vercel.app/dashboard"); // ✅ Redirect after login
   }
 );
 app.get("/auth/user", (req, res) => {

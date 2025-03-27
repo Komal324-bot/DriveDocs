@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://drivedocs.onrender.com", withCredentials: true });
+const API = axios.create({
+    baseURL: "https://drivedocs.onrender.com", 
+    withCredentials: true, 
+  });
 
 export const loginWithGoogle = () => window.location.href = "https://drivedocs.onrender.com/auth/google";
 export const logout = () => API.get("/logout");
